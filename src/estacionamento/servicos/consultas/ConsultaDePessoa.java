@@ -6,10 +6,13 @@ import estacionamento.entidades.Pessoa;
 
 public class ConsultaDePessoa {
 	
+	private Pessoa pessoa;
+	
 	public void consultarPessoa(List<Pessoa> lista, String nome) {
 		for (Pessoa p : lista) {
 			if (nome.equals(p.getNome())) {
 				System.out.println("\nPessoa encontrada!");
+				pessoa = p;
 				System.out.println(p);
 				return;
 			}
@@ -17,4 +20,7 @@ public class ConsultaDePessoa {
 		System.out.println("Pessoa não encontrada!\n");
 	}
 
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
 }

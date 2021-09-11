@@ -1,6 +1,5 @@
 package estacionamento.servicos.cadastros;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,11 +16,10 @@ import estacionamento.enumerados.TiposDeServicos;
 
 public class CadastramentoDePessoa {
 	
-	private List<Pessoa> pessoasCadastradas = new ArrayList<>();
-	
+	private Pessoa pessoa;
 	Scanner scp = new Scanner(System.in);
 	
-	public void cadastrarPessoa() {	
+	public void cadastrarPessoa(List<Pessoa> listaPessoasCadastradas) {	
 		System.out.print("Informe o nome: ");
 		String nome = scp.next();
 		System.out.print("Informe o CPF: ");
@@ -55,7 +53,8 @@ public class CadastramentoDePessoa {
 					+ "\n	14 - Sistemas para Internet"
 					+ "\nInforme a opção: ");
 			int curso = scp.nextInt();
-			pessoasCadastradas.add(new Aluno(nome.toUpperCase(), cpf, TiposDePessoas.procurarOpcao(tipo), matricula, Cursos.procurarOpcao(curso)));			
+			pessoa = new Aluno(nome.toUpperCase(), cpf, TiposDePessoas.procurarOpcao(tipo), matricula, Cursos.procurarOpcao(curso));
+			listaPessoasCadastradas.add(pessoa);			
 			break;
 		
 		case 2:
@@ -76,7 +75,8 @@ public class CadastramentoDePessoa {
 					+ "\n	12 - Reitor"
 					+ "\nInforme a opção: ");
 			int cargo = scp.nextInt();
-			pessoasCadastradas.add(new Funcionario(nome.toUpperCase(), cpf, TiposDePessoas.procurarOpcao(tipo), registro, Cargos.procurarOpcao(cargo)));
+			pessoa = new Funcionario(nome.toUpperCase(), cpf, TiposDePessoas.procurarOpcao(tipo), registro, Cargos.procurarOpcao(cargo));
+			listaPessoasCadastradas.add(pessoa);
 			break;
 		
 		case 3:
@@ -92,7 +92,8 @@ public class CadastramentoDePessoa {
 					+ "\n	7 - Pintor"
 					+ "\nInforme a opção: ");
 			int tipoServico = scp.nextInt();
-			pessoasCadastradas.add(new Terceirizado(nome.toUpperCase(), cpf, TiposDePessoas.procurarOpcao(tipo), nomeEmpresa, TiposDeServicos.procurarOpcao(tipoServico)));
+			pessoa = new Terceirizado(nome.toUpperCase(), cpf, TiposDePessoas.procurarOpcao(tipo), nomeEmpresa, TiposDeServicos.procurarOpcao(tipoServico));
+			listaPessoasCadastradas.add(pessoa);
 			break;
 		
 		case 4:
@@ -108,14 +109,14 @@ public class CadastramentoDePessoa {
 					+ "\n	7 - Outros"
 					+ "\nInforme a opção: ");
 			int motivo = scp.nextInt();
-			pessoasCadastradas.add(new Visitante(nome.toUpperCase(), cpf, TiposDePessoas.procurarOpcao(tipo), numeroTelefone, MotivosDaVisita.procurarOpcao(motivo)));
+			listaPessoasCadastradas.add(new Visitante(nome.toUpperCase(), cpf, TiposDePessoas.procurarOpcao(tipo), numeroTelefone, MotivosDaVisita.procurarOpcao(motivo)));
 			break;
 		default:
 			scp.close();
 		}		
 	}
 
-	public List<Pessoa> getPessoasCadastrados() {
-		return pessoasCadastradas;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 }
