@@ -24,7 +24,8 @@ public class CadastramentoDeVeiculo {
 				+ "\n	4  - Van"
 				+ "\nInforme a opção: ");
 		int tipo = scv.nextInt();
-		
+		System.out.print("Informe a placa do veículo: ");
+		String placa = scv.next();
 		System.out.print("Marca: "
 				+ "\n	1  - Audi"
 				+ "\n	2  - BMW"
@@ -43,9 +44,6 @@ public class CadastramentoDeVeiculo {
 				+ "\n	15 - Outro"
 				+ "\nInforme a opção: ");
 		int marca = scv.nextInt();
-		System.out.print("Informe a placa do veículo: ");
-		String placa = scv.next();
-		
 		String respostaCadastro;
 		do {
 			System.out.print("O dono tem cadastro no sistema (s/n): ");
@@ -64,8 +62,16 @@ public class CadastramentoDeVeiculo {
 			ConsultaDePessoa cdps = new ConsultaDePessoa();
 			System.out.print("Informe o nome: ");
 			String nome = scv.next();
-			cdps.consultarPessoa(dados.getListaPessoasCadastradas(), nome);
+			cdps.consultarPessoa(dados.getListaPessoasCadastradas(), nome.toUpperCase());
 			donoDoCarro = cdps.getPessoa();
+			if (donoDoCarro == null) {
+				System.out.println("Preencha dados pessoais do dono:");
+				cdp.cadastrarPessoa(dados.getListaPessoasCadastradas());
+				donoDoCarro = cdp.getPessoa();
+				veiculo = new Veiculo(TiposDeVeiculos.procurarOpcao(tipo), Marcas.procurarOpcao(marca), placa.toUpperCase(), donoDoCarro);
+				dados.adicionarAoVeiculoAoBandoDeDados(veiculo);
+				return;
+			}
 			veiculo = new Veiculo(TiposDeVeiculos.procurarOpcao(tipo), Marcas.procurarOpcao(marca),placa.toUpperCase(), donoDoCarro);
 			dados.adicionarAoVeiculoAoBandoDeDados(veiculo);
 		}

@@ -9,7 +9,9 @@ import estacionamento.servicos.cadastros.CadastramentoDeVeiculo;
 import estacionamento.servicos.consultas.ConsultaDePessoa;
 import estacionamento.servicos.consultas.ConsultaDeVeiculo;
 import estacionamento.servicos.editores.EditorDePessoa;
+import estacionamento.servicos.editores.EditorDeVeiculo;
 import estacionamento.servicos.exclusores.ExclusorDePessoa;
+import estacionamento.servicos.exclusores.ExclusorDeVeiculo;
 
 public class Inicializador {
 
@@ -20,25 +22,25 @@ public class Inicializador {
 		System.out.println("\n\n======================================  E S T A C I O N A M E N T O   U N I E S P  ======================================");
 		System.out.print("\nSERVIÇOS:\n" 
 				+ "\n- VEÍCULOS:" 
-				+ "\n	1  - Cadastrar" 
-				+ "\n	2  - Consultar"
-				+ "\n	3  - Editar" 
-				+ "\n	4  - Excluir\n" 
+				+ "\n	1  - Cadastrar" //ok
+				+ "\n	2  - Consultar" //ok
+				+ "\n	3  - Editar" //ok
+				+ "\n	4  - Excluir\n" //ok
 				+ "\n- PESSOAS:" 
-				+ "\n	5  - Cadastrar"
-				+ "\n	6  - Consultar" 
-				+ "\n	7  - Editar" 
-				+ "\n	8  - Excluir\n" 
+				+ "\n	5  - Cadastrar" //ok
+				+ "\n	6  - Consultar" //ok
+				+ "\n	7  - Editar" //ok
+				+ "\n	8  - Excluir\n" //ok 
 				+ "\n- ESTACIONAMENTO:"
 				+ "\n	9  - Entrada de veículo" 
 				+ "\n	10 - Saída de veículo\n" 
 				+ "\n- RELATÓRIOS:"
-				+ "\n	11 - Total de veículos" 
-				+ "\n	12 - Total de pessoas" 
+				+ "\n	11 - Total de veículos" //ok
+				+ "\n	12 - Total de pessoas" //ok
 				+ "\n	13 - Por tipo de veículo"
 				+ "\n	14 - Por tipo de pessoa\n" 
 				+ "\n- ENCERRAR:" 
-				+ "\n	15 - Encerrar progrma\n");
+				+ "\n	15 - Encerrar progrma\n"); //ok
 		List<String> opcoes = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15");
 		System.out.print("\nInforme a opção: ");
 		String opcao = sci.next();
@@ -61,6 +63,20 @@ public class Inicializador {
 			System.out.print("Informe a placa do veículo: ");
 			String nomePlaca = sci.next();
 			cdvs.consultarVeiculo(dados.getListaVeiculosCadastrados(), nomePlaca.toUpperCase());
+			inicializacaoPrincipal(dados);
+		case "3":
+			EditorDeVeiculo edv = new EditorDeVeiculo();
+			System.out.println("\n\n- EDITOR DE VEÍCULO:\n");
+			System.out.print("Informe a placa do veículo: ");
+			String nomeEditorVeiculo = sci.next();
+			edv.editarVeiculo(dados.getListaVeiculosCadastrados(), nomeEditorVeiculo.toUpperCase());
+			inicializacaoPrincipal(dados);
+		case "4":
+			ExclusorDeVeiculo edvs = new ExclusorDeVeiculo();
+			System.out.println("\n\n- EXCLUSOR DE VEÍCULO:\n");
+			System.out.print("Informe a placa do veículo: ");
+			String placaParaExcluir = sci.next();
+			edvs.excluirVeiculo(dados.getListaVeiculosCadastrados(), placaParaExcluir.toUpperCase());
 			inicializacaoPrincipal(dados);
 		case "5":
 			CadastramentoDePessoa cdp = new CadastramentoDePessoa();
@@ -89,6 +105,10 @@ public class Inicializador {
 			String nomeExclusor = sci.next();
 			edps.excluirPessoa(dados.getListaPessoasCadastradas(), nomeExclusor.toUpperCase());
 			inicializacaoPrincipal(dados);
+		case "9":
+			
+		case "10":
+		
 		case "11":
 			System.out.println("\n\n- LISTA DE VEÍCULOS:");
 			System.out.println(dados.getListaVeiculosCadastrados());
@@ -97,6 +117,10 @@ public class Inicializador {
 			System.out.println("\n\n- LISTA DE PESSOAS:");
 			System.out.println(dados.getListaPessoasCadastradas());
 			inicializacaoPrincipal(dados);
+		case "13":
+		
+		case "14":
+		
 		case "15":
 			System.out.println("\n\nSistema encerrado!");
 			break;
