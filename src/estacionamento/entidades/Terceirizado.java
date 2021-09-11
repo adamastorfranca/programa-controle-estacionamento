@@ -25,16 +25,16 @@ public class Terceirizado extends Pessoa {
 	public TiposDeServicos getServico() {
 		return servico;
 	}
-
+	
 	public void setServico(TiposDeServicos servico) {
 		this.servico = servico;
 	}
 	
 	@Override
 	public String toString() {
-		return super.toString() +
-				"\nNome da Empresa: " + nomeDaEmpresa +
-				"\nTipo do Serviço: " + servico + "\n";
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("Empresa: %-10s ,Serviço: %-25s", nomeDaEmpresa, servico));
+		return super.toString() + sb.toString();
 	}
 	
 

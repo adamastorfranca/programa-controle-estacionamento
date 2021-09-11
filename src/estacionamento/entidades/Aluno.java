@@ -35,10 +35,10 @@ public class Aluno extends Pessoa {
 	}
 
 	@Override
-	public String toString() {
-		return super.toString() +
-				"\nMatrícula: " + matricula +
-				"\nCurso: " + curso;
+	public String toString() {	
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("Matrícula: %-10s ,Curso: %-25s", matricula, curso));
+		return super.toString() + sb.toString();
 	}
 
 }

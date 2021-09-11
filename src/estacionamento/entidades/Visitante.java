@@ -32,9 +32,9 @@ public class Visitante extends Pessoa {
 	
 	@Override
 	public String toString() {
-		return super.toString() +
-				"\nTelefone: " + telefone +
-				"\nMotivo da visita: " + motivo + "\n";
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("Telefone: %-10s ,Motivo: %-25s", telefone, motivo));
+		return super.toString() + sb.toString();
 	}
 	
 

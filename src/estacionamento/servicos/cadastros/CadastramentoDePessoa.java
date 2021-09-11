@@ -62,18 +62,18 @@ public class CadastramentoDePessoa {
 			System.out.print("Informe o registro de trabalho: ");
 			Integer registro = scp.nextInt();
 			System.out.print("Cargo: "
-					+ "\n1 - Serviços gerais"
-					+ "\n2 - Segurança"
-					+ "\n3 - Secretária"
-					+ "\n4 - Bibliotecária"
-					+ "\n5 - Telemarketing"
-					+ "\n6 - Técnico de informática"
-					+ "\n7 - RH"
-					+ "\n8 - Tesoreiro"
-					+ "\n9 - Coordenador"
-					+ "\n10 - Professor"
-					+ "\n11 - Gerente"
-					+ "\n12 - Reitor"
+					+ "\n	1 - Serviços gerais"
+					+ "\n	2 - Segurança"
+					+ "\n	3 - Secretária"
+					+ "\n	4 - Bibliotecária"
+					+ "\n	5 - Telemarketing"
+					+ "\n	6 - Técnico de informática"
+					+ "\n	7 - RH"
+					+ "\n	8 - Tesoreiro"
+					+ "\n	9 - Coordenador"
+					+ "\n	10 - Professor"
+					+ "\n	11 - Gerente"
+					+ "\n	12 - Reitor"
 					+ "\nInforme a opção: ");
 			int cargo = scp.nextInt();
 			pessoasCadastradas.add(new Funcionario(nome.toUpperCase(), cpf, TiposDePessoas.procurarOpcao(tipo), registro, Cargos.procurarOpcao(cargo)));
@@ -83,13 +83,13 @@ public class CadastramentoDePessoa {
 			System.out.print("Informe o nome da empresa: ");
 			String nomeEmpresa = scp.next();
 			System.out.print("Tipo de serviço: "
-					+ "\n1 - Eletricista"
-					+ "\n2 - Entregador"
-					+ "\n3 - Encanador"
-					+ "\n4 - Jardineiro"
-					+ "\n5 - Motorista"
-					+ "\n6 - Pedreiro"
-					+ "\n7 - Pintor"
+					+ "\n	1 - Eletricista"
+					+ "\n	2 - Entregador"
+					+ "\n	3 - Encanador"
+					+ "\n	4 - Jardineiro"
+					+ "\n	5 - Motorista"
+					+ "\n	6 - Pedreiro"
+					+ "\n	7 - Pintor"
 					+ "\nInforme a opção: ");
 			int tipoServico = scp.nextInt();
 			pessoasCadastradas.add(new Terceirizado(nome.toUpperCase(), cpf, TiposDePessoas.procurarOpcao(tipo), nomeEmpresa, TiposDeServicos.procurarOpcao(tipoServico)));
@@ -99,13 +99,13 @@ public class CadastramentoDePessoa {
 			System.out.print("Informe o número do telefone: ");
 			Integer numeroTelefone = scp.nextInt();
 			System.out.print("Motivo da visita: "
-					+ "\n1 - Conhecer instalações"
-					+ "\n2 - Obter informações"
-					+ "\n3 - Fazer matrícula"
-					+ "\n4 - Atendimento da clínica escola"
-					+ "\n5 - Falar com funcionário"
-					+ "\n6 - Falar com aluno"
-					+ "\n7 - Outros"
+					+ "\n	1 - Conhecer instalações"
+					+ "\n	2 - Obter informações"
+					+ "\n	3 - Fazer matrícula"
+					+ "\n	4 - Atendimento da clínica escola"
+					+ "\n	5 - Falar com funcionário"
+					+ "\n	6 - Falar com aluno"
+					+ "\n	7 - Outros"
 					+ "\nInforme a opção: ");
 			int motivo = scp.nextInt();
 			pessoasCadastradas.add(new Visitante(nome.toUpperCase(), cpf, TiposDePessoas.procurarOpcao(tipo), numeroTelefone, MotivosDaVisita.procurarOpcao(motivo)));

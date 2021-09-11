@@ -5,21 +5,25 @@ import estacionamento.enumerados.TiposDePessoas;
 
 public class Funcionario extends Pessoa {
 
-	private Integer registro;
+	private Integer registroDeTrabalho;
 	private Cargos cargo;
 
 	public Funcionario(String nome, String cpf, TiposDePessoas tipo, Integer registro, Cargos cargo) {
 		super(nome, cpf, tipo);
-		this.registro = registro;
+		this.registroDeTrabalho = registro;
 		this.cargo = cargo;
 	}
 
-	public Integer getRegistro() {
-		return registro;
+	public Integer getRegistroDeTrabalho() {
+		return registroDeTrabalho;
 	}
 
 	public Cargos getCargo() {
 		return cargo;
+	}
+	
+	public void setRegistroDeTrabalho(Integer registro) {
+		this.registroDeTrabalho = registro;
 	}
 
 	public void setCargo(Cargos cargo) {
@@ -28,9 +32,9 @@ public class Funcionario extends Pessoa {
 	
 	@Override
 	public String toString() {
-		return super.toString() +
-				"\nRegistro: " + registro +
-				"\nCargo: " + cargo + "\n";
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("Registro: %-10s ,Cargo: %-25s", registroDeTrabalho, cargo));
+		return super.toString() + sb.toString();
 	}
 
 }

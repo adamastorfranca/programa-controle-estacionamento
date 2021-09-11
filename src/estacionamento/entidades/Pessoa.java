@@ -9,7 +9,6 @@ public abstract class Pessoa {
 	private TiposDePessoas tipo;
 
 	public Pessoa(String nome, String cpf, TiposDePessoas tipo) {
-		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.tipo = tipo;
@@ -41,9 +40,8 @@ public abstract class Pessoa {
 
 	@Override
 	public String toString() {
-		return "INFORMAÇÕES PESSOAIS:" +
-				"\nNome: " + nome +
-				"\nCPF: " + cpf +
-				"\nTipo: " + tipo;
+		StringBuilder sb = new StringBuilder();
+		sb.append(String.format("\nNome: %-15s ,CPF: %-14s ,Tipo: %-12s , ", nome, cpf, tipo));
+		return sb.toString();
 	}
 }
