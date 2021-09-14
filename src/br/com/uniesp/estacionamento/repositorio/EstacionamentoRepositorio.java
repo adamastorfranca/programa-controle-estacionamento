@@ -1,20 +1,34 @@
 package br.com.uniesp.estacionamento.repositorio;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.uniesp.estacionamento.model.Veiculo;
+import br.com.uniesp.estacionamento.model.VagaEstacionamento;
 
 public class EstacionamentoRepositorio {
+
+	private List<VagaEstacionamento> listaTotalDeEntradasNoEstacionamento = new ArrayList<>();
+	private List<VagaEstacionamento> listaDeVagasEmUso = new ArrayList<>();
+
+	public void adicionarEntradaDeVeiculoAoBandoDeDados(VagaEstacionamento entrada) {
+		listaTotalDeEntradasNoEstacionamento.add(entrada);
+	}
 	
-private List<Veiculo> listaDeEntradasNoEstacionamento = new ArrayList<>();
+	public void adicionarUsoDeVaga(VagaEstacionamento entrada) {
+		listaDeVagasEmUso.add(entrada);
+	}
 	
-	public void adicionarEntradaDeVeiculoAoBandoDeDados(Veiculo veiculo) {
-		listaDeEntradasNoEstacionamento.add(veiculo);
+	public void encerrarUsoDeVaga(VagaEstacionamento saida) {
+		saida.setDataHoraSaida(LocalDateTime.now());
+		listaDeVagasEmUso.remove(saida);
 	}
 
-	public List<Veiculo> getListaDeEntradasNoEstacionamento() {
-		return listaDeEntradasNoEstacionamento;
+	public List<VagaEstacionamento> getListaDeEntradasNoEstacionamento() {
+		return listaTotalDeEntradasNoEstacionamento;
 	}
 
+	public List<VagaEstacionamento> getListaDeVagasEmUso() {
+		return listaDeVagasEmUso;
+	}
 }

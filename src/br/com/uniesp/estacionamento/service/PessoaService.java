@@ -127,6 +127,7 @@ public class PessoaService {
 			}
 		}
 		System.out.println("Pessoa não encontrada!\n");
+		pessoa = null;
 	}
 	
 	public void editaPessoa(List<Pessoa> lista, String nome) {
