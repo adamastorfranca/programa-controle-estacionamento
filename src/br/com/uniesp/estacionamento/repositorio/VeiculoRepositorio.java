@@ -3,18 +3,18 @@ package br.com.uniesp.estacionamento.repositorio;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.uniesp.estacionamento.entidade.Aluno;
-import br.com.uniesp.estacionamento.entidade.Funcionario;
-import br.com.uniesp.estacionamento.entidade.Terceirizado;
-import br.com.uniesp.estacionamento.entidade.Veiculo;
-import br.com.uniesp.estacionamento.entidade.Visitante;
-import br.com.uniesp.estacionamento.entidade.enums.Cargos;
-import br.com.uniesp.estacionamento.entidade.enums.Cursos;
-import br.com.uniesp.estacionamento.entidade.enums.Marcas;
-import br.com.uniesp.estacionamento.entidade.enums.MotivosDaVisita;
-import br.com.uniesp.estacionamento.entidade.enums.TiposDePessoas;
-import br.com.uniesp.estacionamento.entidade.enums.TiposDeServicos;
-import br.com.uniesp.estacionamento.entidade.enums.TiposDeVeiculos;
+import br.com.uniesp.estacionamento.model.Aluno;
+import br.com.uniesp.estacionamento.model.Funcionario;
+import br.com.uniesp.estacionamento.model.Terceirizado;
+import br.com.uniesp.estacionamento.model.Veiculo;
+import br.com.uniesp.estacionamento.model.Visitante;
+import br.com.uniesp.estacionamento.model.enums.Cargos;
+import br.com.uniesp.estacionamento.model.enums.Cursos;
+import br.com.uniesp.estacionamento.model.enums.Marcas;
+import br.com.uniesp.estacionamento.model.enums.MotivosDaVisita;
+import br.com.uniesp.estacionamento.model.enums.TiposDePessoas;
+import br.com.uniesp.estacionamento.model.enums.TiposDeServicos;
+import br.com.uniesp.estacionamento.model.enums.TiposDeVeiculos;
 
 public class VeiculoRepositorio {
 

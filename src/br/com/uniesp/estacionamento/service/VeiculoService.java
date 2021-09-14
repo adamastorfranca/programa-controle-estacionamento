@@ -3,10 +3,10 @@ package br.com.uniesp.estacionamento.service;
 import java.util.List;
 import java.util.Scanner;
 
-import br.com.uniesp.estacionamento.entidade.Pessoa;
-import br.com.uniesp.estacionamento.entidade.Veiculo;
-import br.com.uniesp.estacionamento.entidade.enums.Marcas;
-import br.com.uniesp.estacionamento.entidade.enums.TiposDeVeiculos;
+import br.com.uniesp.estacionamento.model.Pessoa;
+import br.com.uniesp.estacionamento.model.Veiculo;
+import br.com.uniesp.estacionamento.model.enums.Marcas;
+import br.com.uniesp.estacionamento.model.enums.TiposDeVeiculos;
 import br.com.uniesp.estacionamento.repositorio.PessoaRepositorio;
 import br.com.uniesp.estacionamento.repositorio.VeiculoRepositorio;
 
@@ -75,11 +75,12 @@ public class VeiculoService {
 			veiculo = new Veiculo(TiposDeVeiculos.procurarOpcao(tipo), Marcas.procurarOpcao(marca),placa.toUpperCase(), donoDoCarro);
 			dadosVeiculo.adicionarAoVeiculoAoBandoDeDados(veiculo);
 		}
+		System.out.println("\nVeículo cadastrado com sucesso!\n");
 	}
 
 	public void consultaVeiculo(List<Veiculo> lista, String placa) {
 		for (Veiculo v : lista) {
-			if (placa.equals(v.getPlacaDoVeiculo())) {
+			if (placa.toUpperCase().equals(v.getPlacaDoVeiculo())) {
 				System.out.println("\nVeículo encontrado!");
 				veiculo = v;
 				System.out.println(v);
@@ -89,9 +90,9 @@ public class VeiculoService {
 		System.out.println("Veículo não encontrado!\n");
 	}
 	
-	public void editaVeiculo(List<Veiculo> lista, String placaDoVeculo) {
+	public void editaVeiculo(List<Veiculo> lista, String placaDoVeiculo) {
 		for (Veiculo v : lista) {
-			if (placaDoVeculo.equals(v.getPlacaDoVeiculo())) {	
+			if (placaDoVeiculo.toUpperCase().equals(v.getPlacaDoVeiculo())) {	
 				System.out.println("\nVeículo encontrado!\n");
 				System.out.println(v);
 				
@@ -158,7 +159,7 @@ public class VeiculoService {
 	
 	public void excluiVeiculo(List<Veiculo> lista, String placaDoVeiculo) {
 		for (Veiculo v : lista) {
-			if (placaDoVeiculo.equals(v.getPlacaDoVeiculo())) {
+			if (placaDoVeiculo.toUpperCase().equals(v.getPlacaDoVeiculo())) {
 				System.out.println("\nVeículo encontrado!\n");
 				System.out.println(v);
 				String resposta;

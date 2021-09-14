@@ -1,10 +1,10 @@
-package br.com.uniesp.estacionamento.entidade;
+package br.com.uniesp.estacionamento.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.uniesp.estacionamento.entidade.enums.Marcas;
-import br.com.uniesp.estacionamento.entidade.enums.TiposDeVeiculos;
+import br.com.uniesp.estacionamento.model.enums.Marcas;
+import br.com.uniesp.estacionamento.model.enums.TiposDeVeiculos;
 
 public class Veiculo {
 

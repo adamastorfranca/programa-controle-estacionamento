@@ -1,4 +1,4 @@
-package br.com.uniesp.estacionamento.entidade.enums;
+package br.com.uniesp.estacionamento.model.enums;
 
 public enum Marcas {
 	

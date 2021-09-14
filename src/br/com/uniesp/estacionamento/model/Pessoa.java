@@ -1,6 +1,6 @@
-package br.com.uniesp.estacionamento.entidade;
+package br.com.uniesp.estacionamento.model;
 
-import br.com.uniesp.estacionamento.entidade.enums.TiposDePessoas;
+import br.com.uniesp.estacionamento.model.enums.TiposDePessoas;
 
 public abstract class Pessoa {
 	

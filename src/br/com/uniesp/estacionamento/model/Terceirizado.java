@@ -1,7 +1,7 @@
-package br.com.uniesp.estacionamento.entidade;
+package br.com.uniesp.estacionamento.model;
 
-import br.com.uniesp.estacionamento.entidade.enums.TiposDePessoas;
-import br.com.uniesp.estacionamento.entidade.enums.TiposDeServicos;
+import br.com.uniesp.estacionamento.model.enums.TiposDePessoas;
+import br.com.uniesp.estacionamento.model.enums.TiposDeServicos;
 
 public class Terceirizado extends Pessoa {
 	

@@ -1,7 +1,7 @@
-package br.com.uniesp.estacionamento.entidade;
+package br.com.uniesp.estacionamento.model;
 
-import br.com.uniesp.estacionamento.entidade.enums.Cargos;
-import br.com.uniesp.estacionamento.entidade.enums.TiposDePessoas;
+import br.com.uniesp.estacionamento.model.enums.Cargos;
+import br.com.uniesp.estacionamento.model.enums.TiposDePessoas;
 
 public class Funcionario extends Pessoa {
 
