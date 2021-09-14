@@ -33,7 +33,7 @@ public class Visitante extends Pessoa {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(String.format("Telefone: %-10s ,Motivo: %-25s", telefone, motivo));
+		sb.append(String.format("Telefone: %-11s ,Motivo: %-24s", telefone, motivo));
 		return super.toString() + sb.toString();
 	}
 	

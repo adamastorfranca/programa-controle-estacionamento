@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import br.com.uniesp.estacionamento.repositorio.PessoaRepositorio;
+import br.com.uniesp.estacionamento.repositorio.VeiculoRepositorio;
 import br.com.uniesp.estacionamento.service.PessoaService;
 import br.com.uniesp.estacionamento.service.VeiculoService;
 
@@ -14,7 +15,7 @@ public class Inicializador {
 	private VeiculoService vs = new VeiculoService();
 	Scanner sc = new Scanner(System.in);
 	
-	public void inicializaPrograma(PessoaRepositorio dados) {
+	public void inicializaPrograma(PessoaRepositorio dadosPessoa, VeiculoRepositorio dadosVeiculo) {
 		System.out.println("\n\n======================================  E S T A C I O N A M E N T O   U N I E S P  ======================================");
 		System.out.print("\nSERVIÇOS:\n" 
 				+ "\n- VEÍCULOS:" 
@@ -42,69 +43,69 @@ public class Inicializador {
 		String opcao = sc.next();
 		if (!opcoes.contains(opcao)) {
 			System.out.println("Opção inválida!");
-			inicializaPrograma(dados);
+			inicializaPrograma(dadosPessoa, dadosVeiculo);
 		}
 		System.out.println("\n=========================================================================================================================");
 
 		switch (opcao) {
 		case "1":
 			System.out.println("\n\n- CADASTRO DE VEÍCULO:\n");
-			vs.cadastraVeiculo(dados);
+			vs.cadastraVeiculo(dadosVeiculo, dadosPessoa);
 			System.out.println("\nVeículo cadastrado com sucesso!\n");
-			inicializaPrograma(dados);
+			inicializaPrograma(dadosPessoa, dadosVeiculo);
 		case "2":
 			System.out.println("\n\n- CONSULTA DE VEÍCULO:\n");
 			System.out.print("Informe a placa do veículo: ");
 			String nomePlaca = sc.next();
-			vs.consultaVeiculo(dados.getListaVeiculosCadastrados(), nomePlaca.toUpperCase());
-			inicializaPrograma(dados);
+			vs.consultaVeiculo(dadosVeiculo.getListaVeiculosCadastrados(), nomePlaca.toUpperCase());
+			inicializaPrograma(dadosPessoa, dadosVeiculo);
 		case "3":
 			System.out.println("\n\n- EDITOR DE VEÍCULO:\n");
 			System.out.print("Informe a placa do veículo: ");
 			String nomeEditorVeiculo = sc.next();
-			vs.editaVeiculo(dados.getListaVeiculosCadastrados(), nomeEditorVeiculo.toUpperCase());
-			inicializaPrograma(dados);
+			vs.editaVeiculo(dadosVeiculo.getListaVeiculosCadastrados(), nomeEditorVeiculo.toUpperCase());
+			inicializaPrograma(dadosPessoa, dadosVeiculo);
 		case "4":
 			System.out.println("\n\n- EXCLUSOR DE VEÍCULO:\n");
 			System.out.print("Informe a placa do veículo: ");
 			String placaParaExcluir = sc.next();
-			vs.excluiVeiculo(dados.getListaVeiculosCadastrados(), placaParaExcluir.toUpperCase());
-			inicializaPrograma(dados);
+			vs.excluiVeiculo(dadosVeiculo.getListaVeiculosCadastrados(), placaParaExcluir.toUpperCase());
+			inicializaPrograma(dadosPessoa, dadosVeiculo);
 		case "5":
 			System.out.println("\n\n- CADASTRO DE PESSOA:\n");
-			ps.cadastraPessoa(dados.getListaPessoasCadastradas());
+			ps.cadastraPessoa(dadosPessoa.getListaPessoasCadastradas());
 			System.out.println("\nPessoa cadastrada com sucesso!\n");
-			inicializaPrograma(dados);
+			inicializaPrograma(dadosPessoa, dadosVeiculo);
 		case "6":
 			System.out.println("\n\n- CONSULTA DE PESSOA:\n");
 			System.out.print("Informe o nome: ");
 			String nomeConsulta = sc.next();
-			ps.consultaPessoa(dados.getListaPessoasCadastradas(), nomeConsulta.toUpperCase());
-			inicializaPrograma(dados);
+			ps.consultaPessoa(dadosPessoa.getListaPessoasCadastradas(), nomeConsulta.toUpperCase());
+			inicializaPrograma(dadosPessoa, dadosVeiculo);
 		case "7":
 			System.out.println("\n\n- EDITOR DE PESSOA:\n");
 			System.out.print("Informe o nome: ");
 			String nomeEditor = sc.next();
-			ps.editaPessoa(dados.getListaPessoasCadastradas(), nomeEditor.toUpperCase());
-			inicializaPrograma(dados);
+			ps.editaPessoa(dadosPessoa.getListaPessoasCadastradas(), nomeEditor.toUpperCase());
+			inicializaPrograma(dadosPessoa, dadosVeiculo);
 		case "8":
 			System.out.println("\n\n- EXCLUSOR DE PESSOA:\n");
 			System.out.print("Informe o nome: ");
 			String nomeExclusor = sc.next();
-			ps.excluiPessoa(dados.getListaPessoasCadastradas(), nomeExclusor.toUpperCase());
-			inicializaPrograma(dados);
+			ps.excluiPessoa(dadosPessoa.getListaPessoasCadastradas(), nomeExclusor.toUpperCase());
+			inicializaPrograma(dadosPessoa, dadosVeiculo);
 		case "9":
 			
 		case "10":
 		
 		case "11":
 			System.out.println("\n\n- LISTA DE VEÍCULOS:");
-			System.out.println(dados.getListaVeiculosCadastrados());
-			inicializaPrograma(dados);
+			System.out.println(dadosVeiculo.getListaVeiculosCadastrados());
+			inicializaPrograma(dadosPessoa, dadosVeiculo);
 		case "12":
 			System.out.println("\n\n- LISTA DE PESSOAS:");
-			System.out.println(dados.getListaPessoasCadastradas());
-			inicializaPrograma(dados);
+			System.out.println(dadosPessoa.getListaPessoasCadastradas());
+			inicializaPrograma(dadosPessoa, dadosVeiculo);
 		case "13":
 		
 		case "14":

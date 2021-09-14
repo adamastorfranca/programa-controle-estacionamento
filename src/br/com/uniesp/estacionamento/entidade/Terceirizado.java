@@ -33,7 +33,7 @@ public class Terceirizado extends Pessoa {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(String.format("Empresa: %-10s ,Serviço: %-25s", nomeDaEmpresa, servico));
+		sb.append(String.format("Empresa: %-12s ,Serviço: %-23s", nomeDaEmpresa, servico));
 		return super.toString() + sb.toString();
 	}
 	

@@ -33,7 +33,7 @@ public class Funcionario extends Pessoa {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(String.format("Registro: %-10s ,Cargo: %-25s", registroDeTrabalho, cargo));
+		sb.append(String.format("Registro: %-11s ,Cargo: %-25s", registroDeTrabalho, cargo));
 		return super.toString() + sb.toString();
 	}
 

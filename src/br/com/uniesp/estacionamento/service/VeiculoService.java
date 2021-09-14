@@ -8,6 +8,7 @@ import br.com.uniesp.estacionamento.entidade.Veiculo;
 import br.com.uniesp.estacionamento.entidade.enums.Marcas;
 import br.com.uniesp.estacionamento.entidade.enums.TiposDeVeiculos;
 import br.com.uniesp.estacionamento.repositorio.PessoaRepositorio;
+import br.com.uniesp.estacionamento.repositorio.VeiculoRepositorio;
 
 public class VeiculoService {
 
@@ -17,7 +18,7 @@ public class VeiculoService {
 	
 	Scanner sc = new Scanner(System.in);
 	
-	public void cadastraVeiculo(PessoaRepositorio dados) {
+	public void cadastraVeiculo(VeiculoRepositorio dadosVeiculo, PessoaRepositorio dadosPessoa) {
 		System.out.print("Tipo: "
 				+ "\n	1  - Carro"
 				+ "\n	2  - Moto"
@@ -53,26 +54,26 @@ public class VeiculoService {
 			
 		if(respostaCadastro.equalsIgnoreCase("n")) {
 			System.out.println("\nPreencha dados pessoais do dono:");
-			ps.cadastraPessoa(dados.getListaPessoasCadastradas());
+			ps.cadastraPessoa(dadosPessoa.getListaPessoasCadastradas());
 			donoDoCarro = ps.getPessoa();
 			veiculo = new Veiculo(TiposDeVeiculos.procurarOpcao(tipo), Marcas.procurarOpcao(marca), placa.toUpperCase(), donoDoCarro);
-			dados.adicionarAoVeiculoAoBandoDeDados(veiculo);
+			dadosVeiculo.adicionarAoVeiculoAoBandoDeDados(veiculo);
 		}
 		if(respostaCadastro.equalsIgnoreCase("s")) {
 			System.out.print("Informe o nome: ");
 			String nome = sc.next();
-			ps.consultaPessoa(dados.getListaPessoasCadastradas(), nome.toUpperCase());
+			ps.consultaPessoa(dadosPessoa.getListaPessoasCadastradas(), nome.toUpperCase());
 			donoDoCarro = ps.getPessoa();
 			if (donoDoCarro == null) {
 				System.out.println("Preencha dados pessoais do dono:");
-				ps.cadastraPessoa(dados.getListaPessoasCadastradas());
+				ps.cadastraPessoa(dadosPessoa.getListaPessoasCadastradas());
 				donoDoCarro = ps.getPessoa();
 				veiculo = new Veiculo(TiposDeVeiculos.procurarOpcao(tipo), Marcas.procurarOpcao(marca), placa.toUpperCase(), donoDoCarro);
-				dados.adicionarAoVeiculoAoBandoDeDados(veiculo);
+				dadosVeiculo.adicionarAoVeiculoAoBandoDeDados(veiculo);
 				return;
 			}
 			veiculo = new Veiculo(TiposDeVeiculos.procurarOpcao(tipo), Marcas.procurarOpcao(marca),placa.toUpperCase(), donoDoCarro);
-			dados.adicionarAoVeiculoAoBandoDeDados(veiculo);
+			dadosVeiculo.adicionarAoVeiculoAoBandoDeDados(veiculo);
 		}
 	}
 
