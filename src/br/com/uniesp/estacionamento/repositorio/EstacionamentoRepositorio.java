@@ -9,6 +9,7 @@ import br.com.uniesp.estacionamento.model.VagaEstacionamento;
 public class EstacionamentoRepositorio {
 
 	private List<VagaEstacionamento> listaTotalDeEntradasNoEstacionamento = new ArrayList<>();
+	private List<VagaEstacionamento> listaTotalDeSaidasNoEstacionamento = new ArrayList<>();
 	private List<VagaEstacionamento> listaDeVagasEmUso = new ArrayList<>();
 
 	public void adicionarEntradaDeVeiculoAoBandoDeDados(VagaEstacionamento entrada) {
@@ -22,13 +23,18 @@ public class EstacionamentoRepositorio {
 	public void encerrarUsoDeVaga(VagaEstacionamento saida) {
 		saida.setDataHoraSaida(LocalDateTime.now());
 		listaDeVagasEmUso.remove(saida);
+		listaTotalDeSaidasNoEstacionamento.add(saida);
 	}
 
-	public List<VagaEstacionamento> getListaDeEntradasNoEstacionamento() {
+	public List<VagaEstacionamento> getListaTotalDeEntradasNoEstacionamento() {
 		return listaTotalDeEntradasNoEstacionamento;
 	}
 
 	public List<VagaEstacionamento> getListaDeVagasEmUso() {
 		return listaDeVagasEmUso;
+	}
+	
+	public List<VagaEstacionamento> getListaTotalDeSaidasNoEstacionamento() {
+		return listaTotalDeSaidasNoEstacionamento;
 	}
 }

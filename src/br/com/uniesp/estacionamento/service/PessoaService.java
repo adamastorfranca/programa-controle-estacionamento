@@ -18,7 +18,7 @@ import br.com.uniesp.estacionamento.model.enums.TiposDeServicos;
 public class PessoaService {
 
 	private Pessoa pessoa;
-	Scanner sc = new Scanner(System.in);
+	private Scanner sc = new Scanner(System.in);
 	
 	public void cadastraPessoa(List<Pessoa> listaPessoasCadastradas) {	
 		System.out.print("Informe o nome: ");
@@ -119,7 +119,7 @@ public class PessoaService {
 
 	public void consultaPessoa(List<Pessoa> lista, String nome) {
 		for (Pessoa p : lista) {
-			if (nome.toUpperCase().equals(p.getNome())) {
+			if (nome.equals(p.getNome())) {
 				System.out.println("\nPessoa encontrada!");
 				pessoa = p;
 				System.out.println(p);

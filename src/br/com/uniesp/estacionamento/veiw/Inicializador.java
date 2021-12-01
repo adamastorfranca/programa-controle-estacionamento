@@ -24,11 +24,11 @@ public class Inicializador {
 	Scanner sc = new Scanner(System.in);
 	
 	public void inicializaPrograma(PessoaRepositorio dadosPessoa, VeiculoRepositorio dadosVeiculo, EstacionamentoRepositorio dadosEstacionamento) {
-		System.out.println("\n\n======================================  E S T A C I O N A M E N T O   U N I E S P  ======================================");
+		System.out.println("\n\n=====================================  E S T A C I O N A M E N T O   U N I E S P  =====================================");
 		System.out.print("\nSERVIÇOS:\n" 				
 				+ "\n- ESTACIONAMENTO:"
-				+ "\n	 1 - Adicionar entrada de veículo"
-				+ "\n	 2 - Adicionar saída de veículo"
+				+ "\n	 1 - Entrada de veículo"
+				+ "\n	 2 - Saída de veículo"
 				+ "\n	 3 - Lista de veículos ainda estacionados"
 				+ "\n	 4 - Lista por tipo de veículo"  
 				+ "\n	 5 - Lista por tipo de pessoa"
@@ -58,7 +58,7 @@ public class Inicializador {
 			System.out.println("Opção inválida!");
 			inicializaPrograma(dadosPessoa, dadosVeiculo, dadosEstacionamento);
 		}
-		System.out.println("\n=========================================================================================================================");
+		System.out.println("\n=======================================================================================================================");
 
 		switch (opcao) {
 		case "1":
@@ -71,11 +71,13 @@ public class Inicializador {
 			System.out.println("\n\n- SAÍDA DE VEÍCULO:\n");
 			System.out.print("Informe a placa do veículo: ");
 			String placaSaida = sc.next();
-			es.saidaDeVeiculo(dadosPessoa, dadosVeiculo, dadosEstacionamento, placaSaida);
+			es.saidaDeVeiculo(dadosEstacionamento, placaSaida);
 			inicializaPrograma(dadosPessoa, dadosVeiculo, dadosEstacionamento);
 		case "3":
 			System.out.println("\n\n- LISTA DE VEÍCULOS AINDA ESTACIONADOS:\n");
-			System.out.println(dadosEstacionamento.getListaDeVagasEmUso());
+			for(VagaEstacionamento v : dadosEstacionamento.getListaDeVagasEmUso()) {			
+				System.out.println(v);
+			}
 			inicializaPrograma(dadosPessoa, dadosVeiculo, dadosEstacionamento);	
 		case "4":
 			System.out.println("\n\n- LISTA POR TIPO DE VEÍCULO ESTACIONADOS:\n");
@@ -86,11 +88,11 @@ public class Inicializador {
 					+ "\n	4  - Van"
 					+ "\nInforme a opção: ");
 			int tipo = sc.nextInt();
-			if (dadosEstacionamento.getListaDeEntradasNoEstacionamento().isEmpty()) {
+			if (dadosEstacionamento.getListaTotalDeEntradasNoEstacionamento().isEmpty()) {
 				System.out.println("\nNão entraram veículos desde tipo no estacionamento");
 				inicializaPrograma(dadosPessoa, dadosVeiculo, dadosEstacionamento);
 			}
-			for(VagaEstacionamento v : dadosEstacionamento.getListaDeEntradasNoEstacionamento()) {
+			for(VagaEstacionamento v : dadosEstacionamento.getListaTotalDeEntradasNoEstacionamento()) {
 				if (v.getVeiculo().getTipo() == TiposDeVeiculos.procurarOpcao(tipo)) {
 					System.out.println(v);
 				}
@@ -105,11 +107,11 @@ public class Inicializador {
 					+ "\n	4 - Visitante"
 					+ "\nInforme a opção: ");	
 			int novoTipo = sc.nextInt();
-			if (dadosEstacionamento.getListaDeEntradasNoEstacionamento().isEmpty()) {
+			if (dadosEstacionamento.getListaTotalDeEntradasNoEstacionamento().isEmpty()) {
 				System.out.println("\nNão entraram veículos desde tipo no estacionamento");
 				inicializaPrograma(dadosPessoa, dadosVeiculo, dadosEstacionamento);
 			}
-			for(VagaEstacionamento v : dadosEstacionamento.getListaDeEntradasNoEstacionamento()) {
+			for(VagaEstacionamento v : dadosEstacionamento.getListaTotalDeEntradasNoEstacionamento()) {
 				if (v.getVeiculo().getDono().getTipo() == TiposDePessoas.procurarOpcao(novoTipo)) {
 					System.out.println(v);
 				}
@@ -117,14 +119,17 @@ public class Inicializador {
 			inicializaPrograma(dadosPessoa, dadosVeiculo, dadosEstacionamento);
 		case "6":			
 			System.out.println("\n\n- LISTA DE TODAS ENTRADAS NO ESTACIONAMENTO:\n");
-			System.out.println(dadosEstacionamento.getListaDeEntradasNoEstacionamento());
+			for(VagaEstacionamento v : dadosEstacionamento.getListaDeVagasEmUso()) {			
+				System.out.println(v);
+			}
+			for(VagaEstacionamento v : dadosEstacionamento.getListaTotalDeSaidasNoEstacionamento()) {			
+				System.out.println(v);
+			}
 			inicializaPrograma(dadosPessoa, dadosVeiculo, dadosEstacionamento);	
 		case "7":			
 			System.out.println("\n\n- LISTA DE TODAS SAÍDAS NO ESTACIONAMENTO:\n");
-			for(VagaEstacionamento v : dadosEstacionamento.getListaDeEntradasNoEstacionamento()) {
-				if(v.getDataHoraSaida() != null) {
-					System.out.println(v);
-				}
+			for(VagaEstacionamento v : dadosEstacionamento.getListaTotalDeSaidasNoEstacionamento()) {			
+				System.out.println(v);
 			}
 			inicializaPrograma(dadosPessoa, dadosVeiculo, dadosEstacionamento);	
 		case "8":

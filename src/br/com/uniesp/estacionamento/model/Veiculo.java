@@ -1,8 +1,5 @@
 package br.com.uniesp.estacionamento.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.com.uniesp.estacionamento.model.enums.Marcas;
 import br.com.uniesp.estacionamento.model.enums.TiposDeVeiculos;
 
@@ -12,7 +9,6 @@ public class Veiculo {
 	private Marcas marca;
 	private String placaDoVeiculo;
 	private Pessoa dono;
-	private List<Pessoa> listaOcupantes = new ArrayList<>();
 	
 	public Veiculo(TiposDeVeiculos tipo, Marcas marca, String placaDoVeiculo, Pessoa dono) {
 		this.tipo = tipo;
@@ -53,14 +49,10 @@ public class Veiculo {
 		this.dono = dono;
 	}
 
-	public List<Pessoa> getListaOcupantes() {
-		return listaOcupantes;
-	}
-	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(String.format("\nTipo: %-6s, Placa: %-8s, Marca: %-10s, Nome do dono: %-15s, CPF: %-14s, Tipo: %-12s", tipo, placaDoVeiculo, marca, dono.getNome(), dono.getCpf(), dono.getTipo()));
+		sb.append(String.format("\nPlaca: %-8s, Tipo: %-6s, Marca: %-10s, Nome do dono: %-15s, CPF: %-14s, Tipo: %-12s",  placaDoVeiculo, tipo, marca, dono.getNome(), dono.getCpf(), dono.getTipo()));
 		return sb.toString();
 	}
 	

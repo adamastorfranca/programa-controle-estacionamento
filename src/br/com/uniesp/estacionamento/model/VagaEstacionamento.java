@@ -7,7 +7,7 @@ public class VagaEstacionamento {
 	
 	private Veiculo veiculo;
 	private LocalDateTime dataHoraEntrada;
-	private LocalDateTime dataHoraSaida = null;
+	private LocalDateTime dataHoraSaida;
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm:ss");
 	
 	public VagaEstacionamento(Veiculo veiculo, LocalDateTime dataHoraEntrada) {
@@ -19,29 +19,20 @@ public class VagaEstacionamento {
 		return veiculo;
 	}
 
-	public LocalDateTime getDataHoraEntrada() {
-		return dataHoraEntrada;
-	}
-
-	public LocalDateTime getDataHoraSaida() {
-		return dataHoraSaida;
-	}
-	
 	public void setDataHoraSaida(LocalDateTime dataHoraSaida) {
 		this.dataHoraSaida = dataHoraSaida;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		String dataSaida = "AINDA ESTACIONADO  ";
-		sb.append("\nEntrada: " + dataHoraEntrada.format(dtf) + ", Saída: " + dataSaida);
-
-		if (dataHoraSaida != null) {
-			dataSaida =  dataHoraSaida.format(dtf);
-		} 
-		sb.append(", ");
-		return sb.toString() + veiculo;
+		if(dataHoraSaida != null) {		
+			sb.append("\nEntrada: " + dataHoraEntrada.format(dtf) + ", Saída: " + dataHoraSaida.format(dtf));
+	    } 
+		else {
+			sb.append("\nEntrada: " + dataHoraEntrada.format(dtf) + ", Saída: AINDA ESTACIONADO");		
+		}
+		return veiculo + sb.toString();
 	}
 
 }

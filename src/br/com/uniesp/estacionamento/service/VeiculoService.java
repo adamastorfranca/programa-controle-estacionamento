@@ -14,9 +14,8 @@ public class VeiculoService {
 
 	private Pessoa donoDoCarro;
 	private Veiculo veiculo;
-	private PessoaService ps = new PessoaService();
-	
-	Scanner sc = new Scanner(System.in);
+	private PessoaService ps = new PessoaService();	
+	private Scanner sc = new Scanner(System.in);
 	
 	public void cadastraVeiculo(VeiculoRepositorio dadosVeiculo, PessoaRepositorio dadosPessoa) {
 		System.out.print("Tipo: "
@@ -62,7 +61,7 @@ public class VeiculoService {
 		if(respostaCadastro.equalsIgnoreCase("s")) {
 			System.out.print("Informe o nome: ");
 			String nome = sc.next();
-			ps.consultaPessoa(dadosPessoa.getListaPessoasCadastradas(), nome.toUpperCase());
+			ps.consultaPessoa(dadosPessoa.getListaPessoasCadastradas(), nome);
 			donoDoCarro = ps.getPessoa();
 			if (donoDoCarro == null) {
 				System.out.println("Preencha dados pessoais do dono:");
